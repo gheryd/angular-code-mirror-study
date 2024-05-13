@@ -32,7 +32,15 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "input": "node_modules/codemirror/lib/codemirror.js"
+              },
+              {
+                "input": "node_modules/codemirror/mode/javascript/javascript.js"
+              }
+              
+            ]
           },
           "configurations": {
             "production": {
