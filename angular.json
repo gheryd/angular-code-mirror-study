@@ -33,13 +33,6 @@
               "src/styles.scss"
             ],
             "scripts": [
-              {
-                "input": "node_modules/codemirror/lib/codemirror.js"
-              },
-              {
-                "input": "node_modules/codemirror/mode/javascript/javascript.js"
-              }
-              
             ]
           },
           "configurations": {

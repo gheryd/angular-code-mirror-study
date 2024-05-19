@@ -1,49 +1,23 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
-import * as CodeMirror from 'codemirror';
-import { EditorConfiguration } from 'codemirror';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   template: `
-  <ngx-codemirror
-    [(ngModel)]="content"
-    [options]="options"
-    (codeMirrorLoaded)="onLoaded($event)"
-  ></ngx-codemirror>`,
+    <h1>ngx-codemirror for codemirror 6</h1>
+    <editor1></editor1>
+  `,
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   
   title = 'angular-code-mirror-study';
-  content = `const v = "prova";
-    function showV(){
-      alert(v);
-    }
-  `;
 
-  @ViewChild(CodemirrorComponent)
-  editor!: CodemirrorComponent
-  protected options: EditorConfiguration = {
-    lineNumbers: true,
-    theme: 'material',
-    mode: 'javascript',
-  }
+
+ 
 
 
   constructor(){
 
   }
 
-  ngAfterViewInit(): void {
-    this.editor.codeMirrorGlobal;
-    console.log("ngAfterViewInit", {editor: this.editor,codeMirrorGlobal: this.editor.codeMirrorGlobal });
-    
-    
-  }
 
-  protected onLoaded(data: CodemirrorComponent){
-    console.log("onLoaded", data.codeMirror);
-    (window as any).gerry = data;
-    console.log("CodeMirror", {CodeMirror});
-  }
 }
