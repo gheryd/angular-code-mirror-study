@@ -1,6 +1,6 @@
 # AngularCodeMirrorStudy
 
-## CodeMirror
+## CodeMirror 6
 
 
 Run `npm run build:lang1` to compile codemirror custom language
