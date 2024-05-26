@@ -3,7 +3,9 @@
 ## CodeMirror 6
 
 
-Run `npm run build:lang1` to compile codemirror custom language
+Run `npm run build:lang1` to compile custom language "lang1"
+
+Run `npm run test:lang1` to execute test for custom language "lang1"
 
 
 ---
