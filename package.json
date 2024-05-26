@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test:lang1": "node ./langs/run-test.mjs lang1",
+    "build:lang1": "node ./langs/build.mjs lang1",
+    "rollup-help": "rollup --help"
   },
   "private": true,
   "dependencies": {
@@ -18,11 +20,13 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
-    "@codemirror/lang-javascript": "^6.2.2",
     "codemirror": "^6.0.1",
+    "@codemirror/lang-javascript": "^6.2.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.12.0"
+    "zone.js": "~0.12.0",
+    "@lezer/highlight": "^1.0.0",
+    "@lezer/lr": "^1.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.10",
@@ -35,6 +39,12 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.9.4"
+    "typescript": "~4.9.4",
+    "@lezer/generator": "^1.0.0",
+    "mocha": "^9.0.1",
+    "@codemirror/language": "^6.0.0",
+    "rollup": "^2.60.2",
+    "rollup-plugin-dts": "^4.0.1",
+    "rollup-plugin-ts": "^3.0.2"
   }
 }

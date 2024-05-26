@@ -5,7 +5,9 @@ import { Component } from '@angular/core';
   template: `
     <h1>ngx-codemirror for codemirror 6</h1>
     <editor1></editor1>
-  `,
+    <editor-lang1></editor-lang1>
+
+    `,
 })
 export class AppComponent {
   
