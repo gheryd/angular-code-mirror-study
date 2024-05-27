@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { EditorView, basicSetup } from "codemirror";
 import { EditorStateConfig, Text,EditorState } from "@codemirror/state";
-import { EXAMPLE } from "langs/lang1/dist";
+import { Lang1 } from "langs/lang1/dist";
 
 
 @Component({
@@ -26,7 +26,7 @@ export class EditorLang1Component implements AfterViewInit {
             doc,
             extensions: [
                 basicSetup,
-                EXAMPLE(), 
+                Lang1(), 
             ]
         };
 

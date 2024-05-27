@@ -22,7 +22,7 @@ const parser = LRParser.deserialize({
   tokenPrec: 0
 });
 
-const EXAMPLELanguage = LRLanguage.define({
+const Lang1Language = LRLanguage.define({
     parser: parser.configure({
         props: [
             indentNodeProp.add({
@@ -44,8 +44,8 @@ const EXAMPLELanguage = LRLanguage.define({
         commentTokens: { line: ";" }
     }
 });
-function EXAMPLE() {
-    return new LanguageSupport(EXAMPLELanguage);
+function Lang1() {
+    return new LanguageSupport(Lang1Language);
 }
 
-export { EXAMPLE, EXAMPLELanguage };
+export { Lang1, Lang1Language };
