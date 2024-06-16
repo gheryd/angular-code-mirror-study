@@ -1,26 +1,73 @@
-@top Program { expression* }
 
-@skip { space | LineComment }
+@precedence {times @left, plus @left}
+
+@top Program {expression*}
+
+@skip { space }
 
 expression {
-  Identifier |
-  String |
-  Boolean |
-  Application { "(" expression* ")" }
+  Function | 
+  Object | 
+  objects | 
+  BinaryExpression |
+  Number
 }
+
+Function { FunctionName "(" Args ")" }
+
+Object { ObjectName "(" Args ")" }
+
+
+objects { Object (ObjectSeparator Object) }
+
+Args { 
+  Arg ("," Arg)+ 
+}
+
+Arg { String | Number | Object | Function | BinaryExpression}
+
+
+BinaryExpression {
+  expression !times Operator expression |
+  expression !plus Operator expression
+
+}
+
 
 @tokens {
-  Identifier { $[a-zA-Z_\-0-9]+ }
-
-  String { '"' (!["\\] | "\\" _)* '"' }
-
-  Boolean { "#t" | "#f" }
-
-  LineComment { ";" ![\n]* }
-
+  Number {@digit+}
+  String { '"' $[a-zA-Z_\-0-9]+ '"' }
+  FunctionName {"ABS"|"EXP"|"FIX"|"INT"|"LN"|"LOG"|"MAX"|"MIN"|"MOD"|"RND"|"RNDD"|"RNDE"|"IIF"|"QRY"|"QRYS"|"FOR"|"date"|"day"|"month"|"year"|"dow"|"dateadd"|"datediff"|"diffdd"|"diffmm"|"diffdd360"|"diffyy"|"dateaddw"|"ddweek"|"makew"|"makenav"|"diffyydec"}
+  ObjectName {"prd"|"fatval"|"op"}
+  ObjectSeparator {"."}
+  Operator {"="| ">"| "<"| "<="| ">="| "+"| "-"| "*"| "/"| "|"| "!"| "&"| "<>"}
   space { $[ \t\n\r]+ }
-
-  "(" ")"
 }
 
-@detectDelim
+
+// @top Program { expression* }
+
+// @skip { space | LineComment }
+
+// expression {
+//   Identifier |
+//   String |
+//   Boolean |
+//   Application { "(" expression* ")" }
+// }
+
+// @tokens {
+//   Identifier { $[a-zA-Z_\-0-9]+ }
+
+//   String { '"' (!["\\] | "\\" _)* '"' }
+
+//   Boolean { "#t" | "#f" }
+
+//   LineComment { ";" ![\n]* }
+
+//   space { $[ \t\n\r]+ }
+
+//   "(" ")"
+// }
+
+// @detectDelim

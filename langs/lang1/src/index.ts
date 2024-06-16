@@ -12,10 +12,15 @@ export const Lang1Language = LRLanguage.define({
         Application: foldInside
       }),
       styleTags({
-        Identifier: t.variableName,
-        Boolean: t.bool,
+        // Identifier: t.variableName,
+        // Boolean: t.bool,
         String: t.string,
+        ObjectName: t.className,
+        FunctionName: t.keyword,
         LineComment: t.lineComment,
+        ObjectSeparator: t.separator,
+        Operator: t.operator,
+        Invalid: t.invalid,
         "( )": t.paren
       })
     ]

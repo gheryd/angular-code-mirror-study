@@ -1,7 +1,11 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { EditorView, basicSetup } from "codemirror";
 import { EditorStateConfig, Text,EditorState } from "@codemirror/state";
-import { Lang1 } from "langs/lang1/dist";
+import { Lang1, Lang1Language } from "langs/lang1/dist";
+import { autocompletion, CompletionContext, CompletionResult } from '@codemirror/autocomplete';
+import {syntaxTree} from "@codemirror/language";
+import { Lang1Linter, handleSuggestLang1 } from "./lang1.tool";
+import {linter, Diagnostic} from "@codemirror/lint"
 
 
 @Component({
@@ -21,12 +25,21 @@ export class EditorLang1Component implements AfterViewInit {
 
 
     ngAfterViewInit(): void {
-        const doc = Text.of(["prova"]);
+
+        const lang1Completation = Lang1Language.data.of({
+            autocomplete: (context: CompletionContext) => handleSuggestLang1(context)
+        })
+
+        const lang1Linter = linter( view => Lang1Linter(view) )
+
+        const doc = Text.of(["prd()"]);
         const stateConfig: EditorStateConfig = {
             doc,
             extensions: [
                 basicSetup,
-                Lang1(), 
+                Lang1(),
+                lang1Completation,
+                lang1Linter
             ]
         };
 
@@ -37,4 +50,9 @@ export class EditorLang1Component implements AfterViewInit {
         });
 
     }
+
+
+
+
+    
 }
